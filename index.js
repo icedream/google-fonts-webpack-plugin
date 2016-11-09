@@ -1,7 +1,7 @@
 'use strict';
 var _ = require('lodash');
 var path = require('path');
-var Downloader = require('lib/downloader');
+var Downloader = require('./lib/downloader');
 
 let googleFontsUrl = "fonts.googleapis.com/css?family=";
 
