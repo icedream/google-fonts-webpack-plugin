@@ -17,13 +17,15 @@ function GoogleFontsWebpackPlugin(options) {
 }
 
 GoogleFontsWebpackPlugin.prototype.apply = function(compiler) {
+    
+    var self = this;
 
     // Generate Font URL's
-        var fontUrls = this.options.fonts.map(function(font,index){
+        var fontUrls = self.options.fonts.map(function(font,index){
             let fontName = Object.keys(font)[0];
             let fontOptions = fontName[fontName];
 
-            let fontUrl = (this.options.ssl ? "https://" : "http://") 
+            let fontUrl = (self.options.ssl ? "https://" : "http://") 
                 + googleFontsUrl + fontName.replace(' ', '+') + ':' + font[fontName];
             return fontUrl;
         });
@@ -33,8 +35,8 @@ GoogleFontsWebpackPlugin.prototype.apply = function(compiler) {
         if (this.download) {
             var dl = new Downloader();
 
-            this.options.fonts.map(function(font) {
-                dl.requestFonts(font, this.options.path);
+            self.options.fonts.map(function(font) {
+                dl.requestFonts(font, self.options.path);
             })
         }
         else {
